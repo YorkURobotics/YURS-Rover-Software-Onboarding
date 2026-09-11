@@ -81,7 +81,7 @@ function clampValue(value, minimum, maximum) {
   return THREE.MathUtils.clamp(Number.isFinite(numericValue) ? numericValue : minimum, minimum, maximum);
 }
 
-export default function RoverViewer() {
+export default function URDFViewer() {
   const containerRef = useRef(null);
 
   useEffect(() => {

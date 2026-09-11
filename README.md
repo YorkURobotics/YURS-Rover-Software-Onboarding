@@ -7,7 +7,13 @@ If you have questions at any point, feel free to message the Software Lead or as
 ## Process
 
 1. Decide which task you will complete.
-2. Clone this repository to your local computer.
+2. Clone this repository to your local computer and enter its folder:
+
+   ```bash
+   git clone https://github.com/YorkURobotics/YURS-Rover-Software-Onboarding.git
+   cd YURS-Rover-Software-Onboarding
+   ```
+
 3. Create a fresh Git repository for your own work. The cloned repository's folder will already contain `.git`, so delete it from your local copy and initialise a new repository:
 
    ```bash

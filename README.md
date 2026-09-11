@@ -1,6 +1,6 @@
 # YURS Rover Software Onboarding
 
-Welcome! This repository contains two software tasks for the YURS rover team: a GUI task and a ROS 2 task. Choose one task to complete before you begin. The task-selection link will be provided separately.
+Welcome! This repository contains two software tasks for the YURS rover team: a GUI (Frontend) task and a ROS 2 (Backend) task. Choose one task to complete before you begin. You can optionally complete both if you want to help with both the Frontend and Backend (Fullstack), but it's not required, and can also be done later down the road once you are accepted. See the [task-selection guide](task-selection.md) to compare them.
 
 If you have questions at any point, feel free to message the Software Lead or ask in the `#prospect-general` channel on the Discord server.
 

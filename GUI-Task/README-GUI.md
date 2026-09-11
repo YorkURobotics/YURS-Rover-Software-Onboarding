@@ -62,7 +62,7 @@ Your UI must include:
 1. A way to control the brightness of the Three.js viewer.
 2. A way to zoom the camera in and out of the Three.js viewer.
 3. A way to select hardcoded profiles that immediately set both Brightness and Zoom. Define at least two profiles, with values inside the API ranges.
-4. Data persistence with `localStorage`. The most recent brightness and zoom values must be restored and applied when the app is opened in a later browser session. Selecting a profile should also update the saved valuess.
+4. Data persistence with `localStorage`. The most recent brightness and zoom values must be restored and applied when the app is opened in a later browser session. Selecting a profile should also update the saved values.
 
 Keep the controls easy to understand. In particular, use visible labels and make the selected profile clear.
 

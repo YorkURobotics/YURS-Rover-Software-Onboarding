@@ -93,13 +93,13 @@ ros2 pkg create position_controller --build-type ament_cmake --dependencies rclc
 
 ## Run and test
 
-Build and source the workspace first. Then **start your controller before the checker**:
+Build and source the workspace first. Then open two terminals: keep your controller running in the first terminal and run the checker in the second. **Start your controller before the checker**:
 
 ```bash
 ros2 run position_controller <your_node_name>
 ```
 
-In a second terminal (also sourced), start the simulator and checker:
+In a second terminal, start the simulator and checker. Leave your controller running in the first terminal:
 
 ```bash
 ros2 launch position_checker position_demo.launch.py

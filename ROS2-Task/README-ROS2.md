@@ -8,7 +8,7 @@ This task uses **ROS 2 Humble Hawksbill** on **Ubuntu 22.04 LTS**. In a terminal
 
 ### My recommended alternative to the ones above: prepared Docker image
 
-The fastest route is this [preconfigured Docker image](https://drive.google.com/file/d/110nax0nybZmWMKUrlIdFWkl3z_0rv9V7/view?usp=sharing). It already contains the required environment. You only need to install Docker and load the downloaded `.tar` file. This route can often get you running in under an hour on both Mac and Windows, no VM or dual booting is needed.
+The fastest route is this [preconfigured Docker image](https://drive.google.com/file/d/110nax0nybZmWMKUrlIdFWkl3z_0rv9V7/view?usp=sharing). It already contains the required environment. Install Docker Desktop, load the downloaded .tar file, and run the container. No manually managed VM or dual boot is required. On Windows, Docker Desktop normally uses the WSL 2 backend. If Docker Desktop is already working on your machine, this route can often get you running in under an hour.
 
 ```bash
 docker load -i /path/to/rover.tar
@@ -20,15 +20,18 @@ Then replace both placeholder paths below with the folder containing your worksp
 docker run --hostname=c44192d8f274 --env=LANG=C.UTF-8 --env=LC_ALL=C.UTF-8 --env=ROS_DISTRO=humble --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --volume=<PATH TO FOLDER ON YOUR PC>:<PATH INSIDE DOCKER, WHICH WILL BE THE SAME FOLDER AS THE ONE ON YOUR PC> --network=bridge -p 5001:5001/udp -p 6080:6080 -p 8080:8080 --restart=no --label='org.opencontainers.image.version=22.04' --runtime=runc -t -d rover
 ```
 
-> Setup is BY FAR the hardest part of this task, which is why I recommend using the Docker image I provided you with above, otherwise, if you are new to Ubuntu, expect the initial setup to take 2 hours or more. If you are new to ROS 2, allow at least 30 minutes to get your environment is working. Confirm the provided packages build and run before writing your controller.
+> Setup is BY FAR the hardest part of this task, which is why I recommend using the Docker image I provided you with above. Otherwise, if you are new to Ubuntu, expect the initial setup to take 2 hours or more. If you are new to ROS 2, allow at least 30 minutes to get your environment working. Confirm the provided packages build and run before writing your controller.
 
 ```bash
+source /opt/ros/humble/setup.bash
 cd ros2_ws
 colcon build
 source install/setup.bash
 ```
 
-`colcon build` builds every ROS 2 package in the workspace and places the runnable result in `install/`. Run it again whenever you change package code or configuration.
+For a native Ubuntu, WSL, or VM installation, `source /opt/ros/humble/setup.bash` loads ROS 2 itself. The prepared Docker image may already do this for you.
+
+`colcon build` builds every ROS 2 package in the workspace. Run it again whenever you change any code or configuration.
 
 `source install/setup.bash` makes the packages you just built available to ROS 2. Run it in every new terminal before using `ros2 run` or `ros2 launch`.
 
@@ -48,6 +51,8 @@ You start with two Python packages:
 | --- | --- | --- |
 | `command_simulator` | `emergency_stop_publisher`, `random_velocity_publisher` | Publishes e-stop state and random `Twist` movement commands. |
 | `position_checker` | `position_checker` | Checks the position published by YOUR node and reports `Correct` or `Incorrect`. |
+
+Do not modify either provided package.
 
 command_simulator publishes these topics:
 
@@ -73,12 +78,14 @@ Your node must:
 Create a Python package with:
 
 ```bash
+cd ros2_ws/src
 ros2 pkg create position_controller --build-type ament_python --dependencies rclpy geometry_msgs std_msgs
 ```
 
 Or create a C++ package with:
 
 ```bash
+cd ros2_ws/src
 ros2 pkg create position_controller --build-type ament_cmake --dependencies rclcpp geometry_msgs std_msgs
 ```
 

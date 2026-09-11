@@ -2,7 +2,7 @@
 
 You may complete either the GUI (Frontend team) task or the ROS 2 (Backend team) task. Both are designed to assess practical software-development skills, but they focus on different kinds of work. Choose the one that best matches what you want to learn and work on.
 
-## GUI task: 3D View Controls
+## GUI Task: 3D View Controls
 
 Completing this task will put you on the Frontend team.
 
@@ -10,10 +10,16 @@ You will build a small interface for a provided 3D viewer. The viewer itself is 
 
 ### Technology stack
 
-- React
-- JavaScript
-- HTML and CSS
-- Node.js and npm
+<table>
+  <tr>
+    <td align="center"><img src="https://cdn.simpleicons.org/react" width="48" height="48" alt="React"><br><sub>React</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/javascript" width="48" height="48" alt="JavaScript"><br><sub>JavaScript</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/html5" width="48" height="48" alt="HTML"><br><sub>HTML</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/css" width="48" height="48" alt="CSS"><br><sub>CSS</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/nodedotjs" width="48" height="48" alt="Node.js"><br><sub>Node.js</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/npm" width="48" height="48" alt="npm"><br><sub>npm</sub></td>
+  </tr>
+</table>
 
 ### This task may be a good fit if you enjoy
 
@@ -24,7 +30,7 @@ You will build a small interface for a provided 3D viewer. The viewer itself is 
 
 You will not need Three.js, 3D-programming, or URDF experience. The provided viewer exposes a small, simple API for the controls to call.
 
-## ROS 2 task: Position Controller
+## ROS 2 Task: Position Controller
 
 Completing this task will put you on the Backend team.
 
@@ -32,9 +38,14 @@ You will create a ROS 2 node that calculates a 2D position from incoming movemen
 
 ### Technology stack
 
-- Ubuntu
-- ROS 2
-- Python or C++
+<table>
+  <tr>
+    <td align="center"><img src="https://cdn.simpleicons.org/ubuntu" width="48" height="48" alt="Ubuntu"><br><sub>Ubuntu</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/ros" width="48" height="48" alt="ROS 2"><br><sub>ROS 2</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/python" width="48" height="48" alt="Python"><br><sub>Python</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/cplusplus" width="48" height="48" alt="C++"><br><sub>C++</sub></td>
+  </tr>
+</table>
 
 ### This task may be a good fit if you enjoy
 

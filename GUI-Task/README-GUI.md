@@ -17,7 +17,7 @@ The app opens in a browser at the URL printed by the development server, normall
 
 ### React
 
-React is our primary language for front-end web development. It follows a component-based architecture, where the user interface is divided into reusable, self-contained components. Each component manages its own logic, state, and rendering behaviour. This modular approach enables developers to build complex user interfaces by combining smaller, manageable components.
+React is our primary framework for front-end web development. It follows a component-based architecture, where the user interface is divided into reusable, self-contained components. Each component manages its own logic, state, and rendering behaviour. This modular approach enables developers to build complex user interfaces by combining smaller, manageable components.
 
 If you need a refresher, use Programming with Mosh's [React tutorial for beginners](https://www.youtube.com/watch?v=SqcY0GlETPk).
 

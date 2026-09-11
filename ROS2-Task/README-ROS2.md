@@ -8,19 +8,46 @@ This task uses **ROS 2 Humble Hawksbill** on **Ubuntu 22.04 LTS**. In a terminal
 
 ### My recommended alternative to the ones above: prepared Docker image
 
-The fastest route is this [preconfigured Docker image](https://drive.google.com/file/d/110nax0nybZmWMKUrlIdFWkl3z_0rv9V7/view?usp=sharing). It already contains the required environment. Install Docker Desktop, load the downloaded .tar file, and run the container. No manually managed VM or dual boot is required. On Windows, Docker Desktop normally uses the WSL 2 backend. If Docker Desktop is already working on your machine, this route can often get you running in under an hour.
+The fastest route is this [preconfigured Docker image folder](https://drive.google.com/drive/folders/1UcQWMOJx9tc7BAHrczsvOzE37cBWTaED?usp=drive_link). It already contains the required environment. Install Docker Desktop, download the image that matches your computer, load the downloaded `.tar` file, and run the container. No manually managed VM or dual boot is required. On Windows, Docker Desktop normally uses the WSL 2 backend. If Docker Desktop is already working on your machine, this route can often get you running in under an hour.
+
+Choose one image and use its corresponding commands below:
+
+- **Apple Silicon Macs** (M1/M2/M3/M4) and other ARM64 computers: download `rover-arm64.tar`.
+- **Intel or AMD computers** (including most Windows PCs and Intel Macs): download `rover-amd64.tar`.
+
+From inside a folder on your computer that you want to be accessible from inside the Docker container:
+
+**ARM64 (Apple Silicon / ARM64)**
 
 ```bash
-docker load -i /path/to/rover.tar
+docker load -i /path/to/rover-arm64.tar
+docker run --name rover --hostname=c44192d8f274 --env=LANG=C.UTF-8 --env=LC_ALL=C.UTF-8 --env=ROS_DISTRO=humble --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --volume=$(pwd):/workspace --network=bridge -p 5001:5001/udp -p 6080:6080 -p 8080:8080 --restart=no --label='org.opencontainers.image.version=22.04' --runtime=runc -t -d rover-arm64
 ```
 
-Then replace both placeholder paths below with the folder containing your workspace and run:
+**AMD64 (Intel / AMD)**
 
 ```bash
-docker run --hostname=c44192d8f274 --env=LANG=C.UTF-8 --env=LC_ALL=C.UTF-8 --env=ROS_DISTRO=humble --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --volume=<PATH TO FOLDER ON YOUR PC>:<PATH INSIDE DOCKER, WHICH WILL BE THE SAME FOLDER AS THE ONE ON YOUR PC> --network=bridge -p 5001:5001/udp -p 6080:6080 -p 8080:8080 --restart=no --label='org.opencontainers.image.version=22.04' --runtime=runc -t -d rover
+docker load -i /path/to/rover-amd64.tar
+docker run --name rover --hostname=c44192d8f274 --env=LANG=C.UTF-8 --env=LC_ALL=C.UTF-8 --env=ROS_DISTRO=humble --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --volume=$(pwd):/workspace --network=bridge -p 5001:5001/udp -p 6080:6080 -p 8080:8080 --restart=no --label='org.opencontainers.image.version=22.04' --runtime=runc -t -d rover-amd64
+```
+It will be in the container as the `/workspace` folder.
+
+Then to go into the running container:
+
+```bash
+docker exec -it rover bash
+cd /workspace
 ```
 
-> Setup is BY FAR the hardest part of this task, which is why I recommend using the Docker image I provided you with above. Otherwise, if you are new to Ubuntu, expect the initial setup to take 2 hours or more. If you are new to ROS 2, allow at least 30 minutes to get your environment working. Confirm the provided packages build and run before writing your controller.
+When you are finished developing with Docker, quit Docker Desktop by clicking the three-dot menu in the bottom-left corner and selecting **Quit Docker Desktop** to properly close it so it's not running in the background.
+
+Windows users should then also run the following in their terminal to stop the WSL and release the RAM it uses:
+
+```powershell
+wsl --shutdown
+```
+
+The setup is BY FAR the hardest part of this task, which is why I recommend using the Docker image I provided you with above. Otherwise, if you are new to Ubuntu, expect the initial setup to take 2 hours or more. If you are new to ROS 2, allow at least 30 minutes to get your environment working. Confirm the provided packages build and run before writing your controller.
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -74,8 +101,8 @@ Your node must:
 2. Subscribe to `/movement_command` and `/emergency_stop`.
 3. For each movement command, add `linear.x` and `linear.y` to the current X/Y position.
 4. Clamp both coordinates to the inclusive range `-10` through `10`.
-5. Ignore movement commands while the e-stop is engaged.
-6. Publish a `geometry_msgs/Point` on `/position` for every movement command.
+5. If the e-stop is engaged, do not change the current position for a movement command.
+6. Publish the current `geometry_msgs/Point` on `/position` for every movement command, including commands received while the e-stop is engaged.
 
 Create a Python package with:
 

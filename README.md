@@ -14,10 +14,21 @@ If you have questions at any point, feel free to message the Software Lead or as
    cd YURS-Rover-Software-Onboarding
    ```
 
-3. Create a fresh Git repository for your own work. The cloned repository's folder will already contain `.git`, so delete it from your local copy and initialise a new repository:
+3. Create a fresh Git repository for your own work. The cloned repository's folder will already contain `.git`, so delete it from your local copy and initialise a new repository. On macOS, Linux, or Git Bash, run:
 
    ```bash
    rm -rf .git
+   ```
+
+   On Windows PowerShell, run:
+
+   ```powershell
+   Remove-Item -Recurse -Force .git
+   ```
+
+   Then, on any platform, run:
+
+   ```bash
    git init
    git add .
    git commit -m "Initial task setup"

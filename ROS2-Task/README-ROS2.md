@@ -43,6 +43,8 @@ See the [Articulated Robotics “Build a Robot” series](https://www.youtube.co
 
 For this task, you only need to use `linear.x` and `linear.y` as 2D movement inputs. Ignore `linear.z` and all `angular` values.
 
+Although `Twist` normally represents velocity, treat `linear.x` and `linear.y` as direct position increments for this task. Do not multiply them by elapsed time.
+
 ## Provided packages
 
 You start with two Python packages:

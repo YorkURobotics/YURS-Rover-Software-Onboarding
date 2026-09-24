@@ -81,8 +81,19 @@ function clampValue(value, minimum, maximum) {
   return THREE.MathUtils.clamp(Number.isFinite(numericValue) ? numericValue : minimum, minimum, maximum);
 }
 
-export default function URDFViewer() {
+export default function URDFViewer({ brightness = 1, zoom = 0.5 }) {
   const containerRef = useRef(null);
+  const viewerApiRef = useRef(null);
+  const latestSettingsRef = useRef({ brightness, zoom });
+  latestSettingsRef.current = { brightness, zoom };
+
+  useEffect(() => {
+    viewerApiRef.current?.setBrightness(brightness);
+  }, [brightness]);
+
+  useEffect(() => {
+    viewerApiRef.current?.setZoom(zoom);
+  }, [zoom]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -223,8 +234,10 @@ export default function URDFViewer() {
           return panOffset.z;
         },
       };
-      window.roverViewer = viewerApi;
+      viewerApiRef.current = viewerApi;
       updateView();
+      viewerApi.setBrightness(latestSettingsRef.current.brightness);
+      viewerApi.setZoom(latestSettingsRef.current.zoom);
     }
 
     const manager = new THREE.LoadingManager();
@@ -286,9 +299,9 @@ export default function URDFViewer() {
       floor.material.dispose();
       renderer.dispose();
       renderer.domElement.remove();
-      if (window.roverViewer === viewerApi) delete window.roverViewer;
+      if (viewerApiRef.current === viewerApi) viewerApiRef.current = null;
     };
   }, []);
 
-  return <div ref={containerRef} className="h-full w-full" />;
+  return <div ref={containerRef} className="viewer-canvas" />;
 }

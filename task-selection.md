@@ -6,7 +6,7 @@ You may complete either the GUI (Frontend team) task or the ROS 2 (Backend team)
 
 Completing this task will put you on the Frontend team.
 
-You will build a small interface for a provided 3D viewer. The viewer itself is already implemented. Your task is to create simple controls that change the brightness and zoom settings. You will also add preset profiles and save the most recent settings so they persist between browser sessions.
+You will complete a small interface for a provided 3D viewer. The viewer and a working Brightness control are already implemented. Following that example, you will add a Zoom control and two preset profiles. No previous React experience is required.
 
 ### Technology stack
 
@@ -64,7 +64,7 @@ The provided simulator and checker let you verify your node without needing phys
 | Main environment | Browser | Ubuntu terminal and ROS 2 |
 | Main languages | JavaScript, HTML, CSS | Python or C++ |
 | Best fit | Front-end and UI interests | Robotics, systems, or back-end interests |
-| Key concepts | Components, events, state, persistence | Nodes, topics, messages, subscriptions, publishing |
+| Key concepts | Events and React state | Nodes, topics, messages, subscriptions, publishing |
 
 There is no preferred task. Pick the one you are most interested in explaining and extending during the interview.
 

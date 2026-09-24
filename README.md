@@ -58,7 +58,6 @@ Your video must demonstrate the applicable completion criteria:
 - Brightness control works.
 - Zoom control works.
 - Profiles can be selected.
-- The latest values persist across browser sessions.
 
 ### ROS 2 task
 

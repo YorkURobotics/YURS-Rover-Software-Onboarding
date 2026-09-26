@@ -21,14 +21,14 @@ From inside a folder on your computer that you want to be accessible from inside
 
 ```bash
 docker load -i /path/to/rover-arm64.tar
-docker run --name rover --hostname=c44192d8f274 --env=LANG=C.UTF-8 --env=LC_ALL=C.UTF-8 --env=ROS_DISTRO=humble --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --volume=$(pwd):/workspace --network=bridge -p 5001:5001/udp -p 6080:6080 -p 8080:8080 --restart=no --label='org.opencontainers.image.version=22.04' --runtime=runc -t -d rover-arm64
+docker run --name rover --hostname=c44192d8f274 --env=LANG=C.UTF-8 --env=LC_ALL=C.UTF-8 --env=ROS_DISTRO=humble --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --volume=$(pwd):/workspace --network=bridge -p 5001:5001/udp -p 6080:6080 -p 8080:8080 -p 8889:8889 --restart=no --label='org.opencontainers.image.version=22.04' --runtime=runc -t -d rover-arm64
 ```
 
 **AMD64 (Intel / AMD)**
 
 ```bash
 docker load -i /path/to/rover-amd64.tar
-docker run --name rover --hostname=c44192d8f274 --env=LANG=C.UTF-8 --env=LC_ALL=C.UTF-8 --env=ROS_DISTRO=humble --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --volume=$(pwd):/workspace --network=bridge -p 5001:5001/udp -p 6080:6080 -p 8080:8080 --restart=no --label='org.opencontainers.image.version=22.04' --runtime=runc -t -d rover-amd64
+docker run --name rover --hostname=c44192d8f274 --env=LANG=C.UTF-8 --env=LC_ALL=C.UTF-8 --env=ROS_DISTRO=humble --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --volume=$(pwd):/workspace --network=bridge -p 5001:5001/udp -p 6080:6080 -p 8080:8080 -p 8889:8889 --restart=no --label='org.opencontainers.image.version=22.04' --runtime=runc -t -d rover-amd64
 ```
 It will be in the container as the `/workspace` folder.
 

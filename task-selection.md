@@ -13,11 +13,9 @@ You will complete a small interface for a provided 3D viewer. The viewer and a w
 <table>
   <tr>
     <td align="center"><img src="https://cdn.simpleicons.org/react" width="48" height="48" alt="React"><br><sub>React</sub></td>
-    <td align="center"><img src="https://cdn.simpleicons.org/javascript" width="48" height="48" alt="JavaScript"><br><sub>JavaScript</sub></td>
-    <td align="center"><img src="https://cdn.simpleicons.org/html5" width="48" height="48" alt="HTML"><br><sub>HTML</sub></td>
-    <td align="center"><img src="https://cdn.simpleicons.org/css" width="48" height="48" alt="CSS"><br><sub>CSS</sub></td>
     <td align="center"><img src="https://cdn.simpleicons.org/nodedotjs" width="48" height="48" alt="Node.js"><br><sub>Node.js</sub></td>
-    <td align="center"><img src="https://cdn.simpleicons.org/npm" width="48" height="48" alt="npm"><br><sub>npm</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/javascript" width="48" height="48" alt="JavaScript"><br><sub>JavaScript</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/css" width="48" height="48" alt="CSS"><br><sub>CSS</sub></td>
   </tr>
 </table>
 
